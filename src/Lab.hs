@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 -- Functional Programming (CS141)                                             --
--- Lab 3: Recursive and higher-order functions                                --
+-- Lab: Type classes                                                          --
 --------------------------------------------------------------------------------
 
 module Lab where
@@ -10,45 +10,7 @@ module Lab where
 -- Some of the functions we will be defining as part of this lab are
 -- part of Haskell's standard library. The following line tells the compiler
 -- not to import them.
-import Prelude hiding ( Monoid(..), elem, maximum, intersperse, transpose
-                      , subsequences, permutations, any, all, flip, takeWhile
-                      , zipWith, groupBy, notElem )
-
---------------------------------------------------------------------------------
--- Recursive and higher-order functions
-
-elem :: Eq a => a -> [a] -> Bool
-elem = undefined
-
-maximum :: Ord a => [a] -> a
-maximum = undefined
-
-intersperse :: a -> [a] -> [a]
-intersperse = undefined
-
-any :: (a -> Bool) -> [a] -> Bool
-any = undefined
-
-all :: (a -> Bool) -> [a] -> Bool
-all = undefined
-
-flip :: (a -> b -> c) -> b -> a -> c
-flip = undefined
-
-takeWhile :: (a -> Bool) -> [a] -> [a]
-takeWhile = undefined
-
-zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
-zipWith = undefined
-
-groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
-groupBy = undefined
-
-subsequences :: [a] -> [[a]]
-subsequences = undefined
-
-permutations :: Eq a => [a] -> [[a]]
-permutations = undefined
+import Prelude hiding ( Monoid(..) )
 
 --------------------------------------------------------------------------------
 -- Monoids
