@@ -11,7 +11,7 @@ import Test.QuickCheck
 
 import Data.List (nub,intersperse,subsequences,groupBy,sort)
 
-import qualified Lab3 as L
+import qualified Lab as L
 
 --------------------------------------------------------------------------------
 
