@@ -10,34 +10,50 @@ module Lab where
 -- Some of the functions we will be defining as part of this lab are
 -- part of Haskell's standard library. The following line tells the compiler
 -- not to import them.
-import Prelude hiding ( Monoid(..) )
+import Prelude hiding ( Semigroup(..), Monoid(..) )
+
+--------------------------------------------------------------------------------
+-- Semigroups
+
+-- Semigroup law:
+--
+-- (Associativity)      x <> (y <> z) = (x <> y) <> z
+
+class Semigroup a where 
+    (<>) :: a -> a -> a 
+
+instance Semigroup Int where 
+    (<>) = undefined 
+
+instance Semigroup [a] where 
+    (<>) = undefined 
 
 --------------------------------------------------------------------------------
 -- Monoids
 
 -- Monoid laws:
 --
--- (Left identity)      mappend mempty x = x
--- (Right identity)     mappend x mempty = x
--- (Associativity)      mappend x (mappend y z) = mappend (mappend x y) z
--- (mconcat)            mconcat = foldr mappend mempty
+-- (Left identity)      mempty <> x = x
+-- (Right identity)     x <> mempty = x
+-- (mconcat)            mconcat = foldr (<>) mempty
 
-class Monoid a where
+class Semigroup a => Monoid a where
     mempty  :: a
-    mappend :: a -> a -> a
     mconcat :: [a] -> a
     mconcat = undefined
 
 instance Monoid Int where
     mempty  = undefined
-    mappend = undefined
 
 instance Monoid [a] where
     mempty  = undefined
-    mappend = undefined
+
+--------------------------------------------------------------------------------
+
+instance Semigroup b => Semigroup (a -> b) where 
+    (<>) = undefined 
 
 instance Monoid b => Monoid (a -> b) where
     mempty  = undefined
-    mappend = undefined
 
 --------------------------------------------------------------------------------
