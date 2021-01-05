@@ -35,12 +35,9 @@ instance Semigroup [a] where
 --
 -- (Left identity)      mempty <> x = x
 -- (Right identity)     x <> mempty = x
--- (mconcat)            mconcat = foldr (<>) mempty
 
 class Semigroup a => Monoid a where
-    mempty  :: a
-    mconcat :: [a] -> a
-    mconcat = undefined
+    mempty :: a
 
 instance Monoid Int where
     mempty  = undefined

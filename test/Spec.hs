@@ -27,14 +27,10 @@ main = hspec $ do
             (L.<>) L.mempty x == x
         prop "satisfies the right identity" $ \(x :: Int) ->
             (L.<>) x L.mempty == x
-        prop "mconcat concatenates" $ \(xs :: [Int]) ->
-            L.mconcat xs == foldr (L.<>) L.mempty xs
     describe "Monoid instance for [a]" $ do
         prop "satisfies the left identity" $ \(x :: [Int]) ->
             (L.<>) L.mempty x == x
         prop "satisfies the right identity" $ \(x :: [Int]) ->
             (L.<>) x L.mempty == x
-        prop "mconcat concatenates" $ \(xs :: [[Int]]) ->
-            L.mconcat xs == foldr (L.<>) L.mempty xs
 
 --------------------------------------------------------------------------------
