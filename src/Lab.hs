@@ -19,9 +19,19 @@ import Prelude hiding ( Semigroup(..), Monoid(..) )
 --
 -- (Associativity)      x <> (y <> z) = (x <> y) <> z
 
-class Semigroup a where 
+class Semigroup a where
+    -- | The <> operator is some binary operator (i.e. taking two arguments)
+    -- which returns a value of the same type as the arguments and which obeys
+    -- the above associativity law. 
     (<>) :: a -> a -> a 
 
+-- There are at least two possible implementations of the Semigroup type class
+-- for the Int type. However, Haskell's type class mechanism only allows one
+-- instance of each type class for each type. Therefore, for the purpose of
+-- this lab, you can arbitrarily decide on one of them. In the standard library,
+-- there is no instance of Semigroup for Int for that reason. Instead, the
+-- standard library uses a trick to work around the above limitation which
+-- we will be able to understand further into the module.
 instance Semigroup Int where 
     (<>) = undefined 
 
@@ -44,6 +54,12 @@ instance Monoid Int where
 
 instance Monoid [a] where
     mempty  = undefined
+
+-- | `mconcat` @xs@ combines all the elements in @xs@ using the `(<>)` operator
+-- from the `Semigroup` instance for the type of elements in @xs@.
+mconcat :: Monoid a => [a] -> a
+mconcat []     = mempty
+mconcat (x:xs) = x <> mconcat xs
 
 --------------------------------------------------------------------------------
 
